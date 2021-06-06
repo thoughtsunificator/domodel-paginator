@@ -1,6 +1,11 @@
+/** @module paginator */
+
 import { Observable } from "domodel"
 
-export default class extends Observable {
+/**
+ * @memberof: module:paginator
+ */
+class Paginator extends Observable {
 
 	/**
 	 * @param {number} limit
@@ -142,3 +147,5 @@ export default class extends Observable {
 	}
 
 }
+
+export default Paginator

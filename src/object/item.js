@@ -1,5 +1,10 @@
+/** @module item */
+
 import { Observable } from "domodel"
 
+/**
+ * @memberof: module:item
+ */
 class Item extends Observable {
 
 	/**
