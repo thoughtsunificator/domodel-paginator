@@ -1,0 +1,39 @@
+.paginator {
+	display: contents;
+	gap: 10px;
+	display: grid
+}
+
+.paginator .pagination-previous {
+	justify-self: flex-start
+}
+
+.paginator .pagination-indicator {
+	justify-self: center;
+	display: grid;
+	grid-auto-flow: column;
+	grid-gap: 10px;
+	align-items: center
+}
+
+.paginator .pagination-jump {
+	text-align: center
+}
+
+.paginator .pagination-next {
+	justify-self: flex-end
+}
+
+.paginator .pagination-content {
+	display: contents
+}
+
+.paginator .pagination-controls {
+	display: grid;
+	grid-auto-flow: column;
+	align-items: center
+}
+
+.paginator .pagination-indicators {
+	display: contents
+}

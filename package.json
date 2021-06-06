@@ -1,0 +1,28 @@
+{
+	"name": "domodel-paginator",
+	"version": "1.0.0",
+	"main": "index.js",
+	"description": "Pagination system for domodel",
+	"type": "module",
+	"devDependencies": {
+		"eslint": "^7.0.0",
+		"jsdom": "^16.6.0",
+		"nodeunit-esm": "^1.0.2"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/thoughtsunificator/domodel-paginator.git"
+	},
+	"bugs": {
+		"url": "https://github.com/thoughtsunificator/domodel-paginator/issues"
+	},
+	"author": "Romain Lebesle <oss@thoughtsunificator.me> (https://thoughtsunificator.me)",
+	"license": "MIT",
+	"scripts": {
+		"test": "nodeunit-esm",
+		"generate-docs": "jsdoc --configure .jsdoc.json --verbose"
+	},
+	"dependencies": {
+		"domodel": "^1.0.5"
+	}
+}
