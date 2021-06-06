@@ -6,13 +6,13 @@ Pagination system for [domodel](https://github.com/thoughtsunificator/domodel).
 
 ### Installing
 
-``npm install domodel-paginator``
+``npm install @domodel/paginator``
 
 ### Usage
 
 ```javascript
 import { Core, Binding } from "domodel"
-import { Paginator, PaginatorModel, PaginatorBinding, ItemBinding } from "domodel-paginator"
+import { Paginator, PaginatorModel, PaginatorBinding, ItemBinding } from "@domodel/paginator"
 import FruitModel from "/model/fruit.js"
 
 export default class extends Binding {
