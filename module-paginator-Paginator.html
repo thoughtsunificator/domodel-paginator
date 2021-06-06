@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>Global - Documentation</title>
+    <title>Paginator - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -29,12 +29,12 @@
     
     <input type="text" id="nav-search" placeholder="Search" />
     
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Item.html">Item</a></li><li><a href="module.exports_module.exports.html">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#getCurrentItems">getCurrentItems</a></li><li><a href="global.html#getNextItems">getNextItems</a></li><li><a href="global.html#getPreviousItems">getPreviousItems</a></li><li><a href="global.html#getItemsByOffset">getItemsByOffset</a></li><li><a href="global.html#getMaximumOffset">getMaximumOffset</a></li><li><a href="global.html#getMaximumPage">getMaximumPage</a></li><li><a href="global.html#getCurrentPage">getCurrentPage</a></li><li><a href="global.html#getPageByOffset">getPageByOffset</a></li><li><a href="global.html#getOffsetByPage">getOffsetByPage</a></li><li><a href="global.html#getPreviousOffset">getPreviousOffset</a></li><li><a href="global.html#getNextOffset">getNextOffset</a></li><li><a href="global.html#getNearestOffset">getNearestOffset</a></li><li><a href="global.html#items">items</a></li><li><a href="global.html#limit">limit</a></li><li><a href="global.html#offset">offset</a></li><li><a href="global.html#page">page</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module-item-Item.html">Item</a></li><li><a href="module-page-Page.html">Page</a></li><li><a href="module-paginator-Paginator.html">Paginator</a><ul class='methods'><li data-type='method'><a href="module-paginator-Paginator.html#getCurrentItems">getCurrentItems</a></li><li data-type='method'><a href="module-paginator-Paginator.html#getNextItems">getNextItems</a></li><li data-type='method'><a href="module-paginator-Paginator.html#getPreviousItems">getPreviousItems</a></li><li data-type='method'><a href="module-paginator-Paginator.html#getItemsByOffset">getItemsByOffset</a></li><li data-type='method'><a href="module-paginator-Paginator.html#getMaximumOffset">getMaximumOffset</a></li><li data-type='method'><a href="module-paginator-Paginator.html#getMaximumPage">getMaximumPage</a></li><li data-type='method'><a href="module-paginator-Paginator.html#getCurrentPage">getCurrentPage</a></li><li data-type='method'><a href="module-paginator-Paginator.html#getPageByOffset">getPageByOffset</a></li><li data-type='method'><a href="module-paginator-Paginator.html#getOffsetByPage">getOffsetByPage</a></li><li data-type='method'><a href="module-paginator-Paginator.html#getPreviousOffset">getPreviousOffset</a></li><li data-type='method'><a href="module-paginator-Paginator.html#getNextOffset">getNextOffset</a></li><li data-type='method'><a href="module-paginator-Paginator.html#getNearestOffset">getNearestOffset</a></li></ul></li></ul><h3>Modules</h3><ul><li><a href="module-item.html">item</a></li><li><a href="module-page.html">page</a></li><li><a href="module-paginator.html">paginator</a></li></ul>
 </nav>
 
 <div id="main">
     
-    <h1 class="page-title">Global</h1>
+    <h1 class="page-title">Paginator</h1>
     
 
     
@@ -47,7 +47,9 @@
 <header>
     
         <h2>
+            <span class="ancestors"><a href="module-paginator.html">paginator</a>~</span>
         
+        Paginator
         </h2>
         
     
@@ -59,8 +61,22 @@
         
             
 
+    
+
+    <h4 class="name" id="Paginator"><span class="type-signature"></span>new Paginator<span class="signature">(limit)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
 <dl class="details">
 
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="paginator.js.html">paginator.js</a>, <a href="paginator.js.html#line8">line 8</a>
+    </li></ul></dd>
     
 
     
@@ -97,9 +113,83 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>limit</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
             
 
             
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         
         </div>
     
@@ -121,7 +211,7 @@
 
         
             
-<h4 class="name" id="items"><span class="type-signature"></span>items<span class="type-signature"> :Array.&lt;<a href="Item.html">Item</a>></span></h4>
+<h4 class="name" id="items"><span class="type-signature"></span>items<span class="type-signature"> :Array.&lt;Item></span></h4>
 
 
 
@@ -132,7 +222,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="paginator.js.html">paginator.js</a>, <a href="paginator.js.html#line111">line 111</a>
+        <a href="paginator.js.html">paginator.js</a>, <a href="paginator.js.html#line116">line 116</a>
     </li></ul></dd>
     
 
@@ -177,7 +267,7 @@
     <ul>
         <li>
             
-<span class="param-type">Array.&lt;<a href="Item.html">Item</a>></span>
+<span class="param-type">Array.&lt;Item></span>
 
 
         </li>
@@ -201,7 +291,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="paginator.js.html">paginator.js</a>, <a href="paginator.js.html#line118">line 118</a>
+        <a href="paginator.js.html">paginator.js</a>, <a href="paginator.js.html#line123">line 123</a>
     </li></ul></dd>
     
 
@@ -270,7 +360,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="paginator.js.html">paginator.js</a>, <a href="paginator.js.html#line125">line 125</a>
+        <a href="paginator.js.html">paginator.js</a>, <a href="paginator.js.html#line130">line 130</a>
     </li></ul></dd>
     
 
@@ -339,7 +429,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="paginator.js.html">paginator.js</a>, <a href="paginator.js.html#line136">line 136</a>
+        <a href="paginator.js.html">paginator.js</a>, <a href="paginator.js.html#line141">line 141</a>
     </li></ul></dd>
     
 
@@ -406,7 +496,7 @@
 
     
 
-    <h4 class="name" id="getCurrentItems"><span class="type-signature"></span>getCurrentItems<span class="signature">()</span><span class="type-signature"> &rarr; {Array.&lt;<a href="Item.html">Item</a>>}</span></h4>
+    <h4 class="name" id="getCurrentItems"><span class="type-signature"></span>getCurrentItems<span class="signature">()</span><span class="type-signature"> &rarr; {Array.&lt;Item>}</span></h4>
 
     
 
@@ -418,7 +508,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="paginator.js.html">paginator.js</a>, <a href="paginator.js.html#line19">line 19</a>
+        <a href="paginator.js.html">paginator.js</a>, <a href="paginator.js.html#line24">line 24</a>
     </li></ul></dd>
     
 
@@ -492,7 +582,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Array.&lt;<a href="Item.html">Item</a>></span>
+<span class="param-type">Array.&lt;Item></span>
 
 
     </dd>
@@ -507,7 +597,7 @@
 
     
 
-    <h4 class="name" id="getNextItems"><span class="type-signature"></span>getNextItems<span class="signature">()</span><span class="type-signature"> &rarr; {Array.&lt;<a href="Item.html">Item</a>>}</span></h4>
+    <h4 class="name" id="getNextItems"><span class="type-signature"></span>getNextItems<span class="signature">()</span><span class="type-signature"> &rarr; {Array.&lt;Item>}</span></h4>
 
     
 
@@ -519,7 +609,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="paginator.js.html">paginator.js</a>, <a href="paginator.js.html#line26">line 26</a>
+        <a href="paginator.js.html">paginator.js</a>, <a href="paginator.js.html#line31">line 31</a>
     </li></ul></dd>
     
 
@@ -593,7 +683,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Array.&lt;<a href="Item.html">Item</a>></span>
+<span class="param-type">Array.&lt;Item></span>
 
 
     </dd>
@@ -608,7 +698,7 @@
 
     
 
-    <h4 class="name" id="getPreviousItems"><span class="type-signature"></span>getPreviousItems<span class="signature">()</span><span class="type-signature"> &rarr; {Array.&lt;<a href="Item.html">Item</a>>}</span></h4>
+    <h4 class="name" id="getPreviousItems"><span class="type-signature"></span>getPreviousItems<span class="signature">()</span><span class="type-signature"> &rarr; {Array.&lt;Item>}</span></h4>
 
     
 
@@ -620,7 +710,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="paginator.js.html">paginator.js</a>, <a href="paginator.js.html#line34">line 34</a>
+        <a href="paginator.js.html">paginator.js</a>, <a href="paginator.js.html#line39">line 39</a>
     </li></ul></dd>
     
 
@@ -694,7 +784,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Array.&lt;<a href="Item.html">Item</a>></span>
+<span class="param-type">Array.&lt;Item></span>
 
 
     </dd>
@@ -709,7 +799,7 @@
 
     
 
-    <h4 class="name" id="getItemsByOffset"><span class="type-signature"></span>getItemsByOffset<span class="signature">(offset)</span><span class="type-signature"> &rarr; {Array.&lt;<a href="Item.html">Item</a>>}</span></h4>
+    <h4 class="name" id="getItemsByOffset"><span class="type-signature"></span>getItemsByOffset<span class="signature">(offset)</span><span class="type-signature"> &rarr; {Array.&lt;Item>}</span></h4>
 
     
 
@@ -721,7 +811,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="paginator.js.html">paginator.js</a>, <a href="paginator.js.html#line43">line 43</a>
+        <a href="paginator.js.html">paginator.js</a>, <a href="paginator.js.html#line48">line 48</a>
     </li></ul></dd>
     
 
@@ -844,7 +934,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Array.&lt;<a href="Item.html">Item</a>></span>
+<span class="param-type">Array.&lt;Item></span>
 
 
     </dd>
@@ -871,7 +961,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="paginator.js.html">paginator.js</a>, <a href="paginator.js.html#line50">line 50</a>
+        <a href="paginator.js.html">paginator.js</a>, <a href="paginator.js.html#line55">line 55</a>
     </li></ul></dd>
     
 
@@ -972,7 +1062,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="paginator.js.html">paginator.js</a>, <a href="paginator.js.html#line58">line 58</a>
+        <a href="paginator.js.html">paginator.js</a>, <a href="paginator.js.html#line63">line 63</a>
     </li></ul></dd>
     
 
@@ -1073,7 +1163,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="paginator.js.html">paginator.js</a>, <a href="paginator.js.html#line65">line 65</a>
+        <a href="paginator.js.html">paginator.js</a>, <a href="paginator.js.html#line70">line 70</a>
     </li></ul></dd>
     
 
@@ -1174,7 +1264,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="paginator.js.html">paginator.js</a>, <a href="paginator.js.html#line73">line 73</a>
+        <a href="paginator.js.html">paginator.js</a>, <a href="paginator.js.html#line78">line 78</a>
     </li></ul></dd>
     
 
@@ -1324,7 +1414,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="paginator.js.html">paginator.js</a>, <a href="paginator.js.html#line81">line 81</a>
+        <a href="paginator.js.html">paginator.js</a>, <a href="paginator.js.html#line86">line 86</a>
     </li></ul></dd>
     
 
@@ -1474,7 +1564,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="paginator.js.html">paginator.js</a>, <a href="paginator.js.html#line88">line 88</a>
+        <a href="paginator.js.html">paginator.js</a>, <a href="paginator.js.html#line93">line 93</a>
     </li></ul></dd>
     
 
@@ -1575,7 +1665,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="paginator.js.html">paginator.js</a>, <a href="paginator.js.html#line95">line 95</a>
+        <a href="paginator.js.html">paginator.js</a>, <a href="paginator.js.html#line100">line 100</a>
     </li></ul></dd>
     
 
@@ -1676,7 +1766,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="paginator.js.html">paginator.js</a>, <a href="paginator.js.html#line104">line 104</a>
+        <a href="paginator.js.html">paginator.js</a>, <a href="paginator.js.html#line109">line 109</a>
     </li></ul></dd>
     
 
@@ -1829,7 +1919,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Sun Jun 06 2021 20:39:58 GMT+0000 (Coordinated Universal Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Sun Jun 06 2021 20:42:50 GMT+0000 (Coordinated Universal Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
