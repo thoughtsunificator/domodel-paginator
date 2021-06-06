@@ -5,7 +5,9 @@
 	"description": "Pagination system for domodel",
 	"type": "module",
 	"devDependencies": {
+		"docdash": "^1.2.0",
 		"eslint": "^7.0.0",
+		"jsdoc": "^3.6.6",
 		"jsdom": "^16.6.0",
 		"nodeunit-esm": "^1.0.2"
 	},
