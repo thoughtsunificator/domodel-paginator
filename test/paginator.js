@@ -1,8 +1,11 @@
+import { Observable } from "domodel"
+
 import Paginator from "../src/object/paginator.js"
 
 export function instance(test) {
-	test.expect(3)
+	test.expect(4)
 	const paginator = new Paginator(5)
+	test.ok(paginator instanceof Observable)
 	test.ok(Array.isArray(paginator._items))
 	test.strictEqual(paginator._limit, 5)
 	test.strictEqual(paginator._offset, 0)

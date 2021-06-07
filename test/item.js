@@ -1,12 +1,13 @@
-import { Binding } from "domodel"
+import { Binding, Observable } from "domodel"
 
 import Item from "../src/object/item.js"
 
 export function instance(test) {
-	test.expect(3)
+	test.expect(4)
 	const model = { tagName: "div" }
 	const binding = new Binding()
 	const item = new Item(model, binding, { test: 1 })
+	test.ok(item instanceof Observable)
 	test.deepEqual(item.model, model)
 	test.deepEqual(item.binding, binding)
 	test.strictEqual(item.properties.test, 1)
