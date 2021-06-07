@@ -175,7 +175,6 @@ export function jumpButton(test) {
 	])
 	paginator.listen("offset set", offset => {
 		count++
-		console.log(offset)
 		if(count === 1) {
 			test.strictEqual(binding.identifier.controls.identifier.jump.value, "2")
 			test.strictEqual(offset, 2)
