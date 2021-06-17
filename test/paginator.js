@@ -3,12 +3,21 @@ import { Observable } from "domodel"
 import Paginator from "../src/object/paginator.js"
 
 export function instance(test) {
-	test.expect(4)
+	test.expect(7)
 	const paginator = new Paginator(5)
 	test.ok(paginator instanceof Observable)
-	test.ok(Array.isArray(paginator._items))
-	test.strictEqual(paginator._limit, 5)
-	test.strictEqual(paginator._offset, 0)
+	test.ok(Array.isArray(paginator.items))
+	test.strictEqual(paginator.items.length, 0)
+	test.strictEqual(paginator.limit, 5)
+	test.strictEqual(paginator.offset, 0)
+	test.doesNotThrow(function() {
+		paginator.offset = 1
+		paginator.page = new Observable()
+	})
+	test.throws(function() {
+		paginator.items = []
+		paginator.limit = 1
+	})
 	test.done()
 }
 
@@ -118,9 +127,9 @@ export function getCurrentPage(test) {
 	const paginator = new Paginator(3)
 	paginator._items = [1, 2, 3, 4, 5, 6, 7, 8]
 	test.strictEqual(paginator.getCurrentPage(), 1)
-	paginator._offset = 3
+	paginator.offset = 3
 	test.strictEqual(paginator.getCurrentPage(), 2)
-	paginator._offset = 6
+	paginator.offset = 6
 	test.strictEqual(paginator.getCurrentPage(), 3)
 	paginator._limit = 4
 	test.strictEqual(paginator.getCurrentPage(), 2)

@@ -1,5 +1,5 @@
 import { JSDOM } from "jsdom"
-import { Core } from "domodel"
+import { Core, Binding } from "domodel"
 
 import ItemBinding from "../src/model/item.binding.js"
 
@@ -12,12 +12,33 @@ const model = {
 	tagName: "div"
 }
 
+const RootModel = { tagName: "div" }
+let rootBinding
+
+export function setUp(callback) {
+	rootBinding = new Binding()
+	Core.run(RootModel, { parentNode: document.body, binding: rootBinding })
+	callback()
+}
+
+export function tearDown(callback) {
+	rootBinding.remove()
+	callback()
+}
+
+export function instance(test) {
+	test.expect(1)
+	test.ok(new ItemBinding() instanceof Binding)
+	test.done()
+}
+
 export function clear(test) {
 	test.expect(2)
 	const page = new Page()
-	Core.run(model, { parentNode: document.body, binding: new ItemBinding({ page }) })
-	test.strictEqual(document.body.innerHTML, "<div></div>")
+	const binding = new ItemBinding({ page })
+	rootBinding.run(model, { binding })
+	test.strictEqual(rootBinding.root.innerHTML, "<div></div>")
 	page.emit("clear")
-	test.strictEqual(document.body.innerHTML, "")
+	test.strictEqual(rootBinding.root.innerHTML, "")
 	test.done()
 }

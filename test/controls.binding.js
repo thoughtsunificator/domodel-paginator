@@ -1,9 +1,10 @@
 import { JSDOM } from "jsdom"
-import { Core } from "domodel"
+import { Core, Binding } from "domodel"
 
 import PaginatorModel from "../src/model/paginator.js"
 
 import PaginatorBinding from "../src/model/paginator.binding.js"
+import ControlsBinding from "../src/model/controls.binding.js"
 import ItemBinding from "../src/model/item.binding.js"
 
 import Paginator from "../src/object/paginator.js"
@@ -18,18 +19,39 @@ const model = data => ({
 	textContent: data.number
 })
 
+const RootModel = { tagName: "div" }
+let rootBinding
+
+export function setUp(callback) {
+	rootBinding = new Binding()
+	Core.run(RootModel, { parentNode: document.body, binding: rootBinding })
+	callback()
+}
+
+export function tearDown(callback) {
+	rootBinding.remove()
+	callback()
+}
+
+export function instance(test) {
+	test.expect(1)
+	test.ok(new ControlsBinding() instanceof Binding)
+	test.done()
+}
+
 export function previous(test) {
 	test.expect(3)
 	const paginator = new Paginator(3)
 	let count = 0
-	paginator.listen("offset set", offset => {
+	const binding = new PaginatorBinding({ paginator })
+	binding.listen(paginator, "offset set", offset => {
 		count++
 		test.strictEqual(offset, paginator.getPreviousOffset())
 		if(count === 3) {
 			test.done()
 		}
 	})
-	Core.run(PaginatorModel, { parentNode: document.body, binding: new PaginatorBinding({ paginator }) })
+	rootBinding.run(PaginatorModel, { binding })
 	paginator.emit("previous")
 	paginator.offset = 50
 	paginator.emit("previous")
@@ -40,14 +62,15 @@ export function next(test) {
 	test.expect(3)
 	const paginator = new Paginator(3)
 	let count = 0
-	paginator.listen("offset set", offset => {
+	const binding = new PaginatorBinding({ paginator })
+	binding.listen(paginator, "offset set", offset => {
 		count++
 		test.strictEqual(offset, paginator.getNextOffset())
 		if(count === 3) {
 			test.done()
 		}
 	})
-	Core.run(PaginatorModel, { parentNode: document.body, binding: new PaginatorBinding({ paginator }) })
+	rootBinding.run(PaginatorModel, { binding })
 	paginator.emit("next")
 	paginator.offset = 43
 	paginator.emit("next")
@@ -58,9 +81,9 @@ export function itemsChanged(test) {
 	test.expect(8)
 	const paginator = new Paginator(2)
 	const binding = new PaginatorBinding({ paginator })
-	Core.run(PaginatorModel, { parentNode: document.body, binding })
+	rootBinding.run(PaginatorModel, { binding })
 	let count = 0
-	paginator.listen("items changed", () => {
+	binding.listen(paginator, "items changed", () => {
 		count++
 		if(count === 1) {
 			test.strictEqual(binding.identifier.controls.identifier.totalPages.textContent, "/ 2")
@@ -106,9 +129,9 @@ export function offsetChanged(test) {
 	test.expect(6)
 	const paginator = new Paginator(2)
 	const binding = new PaginatorBinding({ paginator })
-	Core.run(PaginatorModel, { parentNode: document.body, binding })
+	rootBinding.run(PaginatorModel, { binding })
 	let count = 0
-	paginator.listen("offset changed", () => {
+	binding.listen(paginator, "offset changed", () => {
 		count++
 		if(count === 1) {
 			test.strictEqual(binding.identifier.controls.identifier.jump.value, "1")
@@ -138,8 +161,8 @@ export function previousButton(test) {
 	const paginator = new Paginator(2)
 	const binding = new PaginatorBinding({ paginator })
 	let emitted = false
-	Core.run(PaginatorModel, { parentNode: document.body, binding })
-	paginator.listen("previous", () => {
+	rootBinding.run(PaginatorModel, { binding })
+	binding.listen(paginator, "previous", () => {
 		emitted = true
 	})
 	binding.identifier.controls.identifier.previous.dispatchEvent(new window.Event('click'));
@@ -152,8 +175,8 @@ export function nextButton(test) {
 	const paginator = new Paginator(2)
 	const binding = new PaginatorBinding({ paginator })
 	let emitted = false
-	Core.run(PaginatorModel, { parentNode: document.body, binding })
-	paginator.listen("next", () => {
+	rootBinding.run(PaginatorModel, { binding })
+	binding.listen(paginator, "next", () => {
 		emitted = true
 	})
 	binding.identifier.controls.identifier.next.dispatchEvent(new window.Event('click'));
@@ -166,14 +189,14 @@ export function jumpButton(test) {
 	const paginator = new Paginator(2)
 	const binding = new PaginatorBinding({ paginator })
 	let count = 0
-	Core.run(PaginatorModel, { parentNode: document.body, binding })
+	rootBinding.run(PaginatorModel, { binding })
 	paginator.emit("items set", [
 		new Item(model, ItemBinding, { number: 1 }),
 		new Item(model, ItemBinding, { number: 2 }),
 		new Item(model, ItemBinding, { number: 3 }),
 		new Item(model, ItemBinding, { number: 3 }),
 	])
-	paginator.listen("offset set", offset => {
+	binding.listen(paginator, "offset set", offset => {
 		count++
 		if(count === 1) {
 			test.strictEqual(binding.identifier.controls.identifier.jump.value, "2")
