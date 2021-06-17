@@ -50,13 +50,13 @@ export function itemsSet(test) {
 	test.strictEqual(document.querySelector(".paginator .pagination-content").innerHTML, "<div>1</div><div>2</div><div>3</div>")
 	paginator.emit("items set", items)
 	test.strictEqual(document.querySelector(".paginator .pagination-content").innerHTML, "<div>1</div><div>2</div><div>3</div>")
-	let count = 0
+	let index = 0
 	rootBinding.listen(paginator, "items set", items => {
-		count++
-		if(count === 3) {
+		if(index === 2) {
 			test.strictEqual(document.querySelector(".paginator .pagination-content").innerHTML, "<div>1</div><div>2</div><div>3</div>")
 			test.done()
 		}
+		index++
 	})
 	paginator.emit("items set", items)
 	paginator.emit("items set", items)
@@ -96,15 +96,15 @@ export function offsetSet(test) {
 export function offsetChanged(test) {
 	test.expect(2)
 	const paginator = new Paginator(3)
-	let count = 0
+	let index = 0
 	rootBinding.listen(paginator, "offset changed", offset => {
-		count++
-		if(count === 1) {
+		if(index === 0) {
 			test.strictEqual(offset, 0)
-		} else if(count === 2) {
+		} else if(index === 1) {
 			test.strictEqual(offset, 3)
 			test.done()
 		}
+		index++
 	})
 	rootBinding.run(PaginatorModel, { binding: new PaginatorBinding({ paginator }) })
 	paginator.emit("items set", [
