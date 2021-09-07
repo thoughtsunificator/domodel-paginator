@@ -1,6 +1,6 @@
 import { Observable } from "domodel"
 
-import Paginator from "../src/object/paginator.js"
+import { Paginator } from "../index.js"
 
 export function instance(test) {
 	test.expect(7)

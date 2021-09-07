@@ -1,14 +1,9 @@
 import { JSDOM } from "jsdom"
 import { Core, Binding } from "domodel"
 
-import PaginatorModel from "../src/model/paginator.js"
+import { PaginatorModel, PaginatorBinding, ItemBinding, Paginator, Item } from "../index.js"
 
-import PaginatorBinding from "../src/model/paginator.binding.js"
 import ControlsBinding from "../src/model/controls.binding.js"
-import ItemBinding from "../src/model/item.binding.js"
-
-import Paginator from "../src/object/paginator.js"
-import Item from "../src/object/item.js"
 
 const virtualDOM = new JSDOM()
 const window = virtualDOM.window

@@ -1,7 +1,7 @@
 import { JSDOM } from "jsdom"
 import { Core, Binding } from "domodel"
 
-import ItemBinding from "../src/model/item.binding.js"
+import { ItemBinding } from "../index.js"
 
 import Page from "../src/object/page.js"
 

@@ -1,6 +1,6 @@
 import { Binding, Observable } from "domodel"
 
-import Item from "../src/object/item.js"
+import { Item } from "../index.js"
 
 export function instance(test) {
 	test.expect(5)
