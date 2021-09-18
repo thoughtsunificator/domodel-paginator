@@ -1,3 +1,4 @@
+import assert from "assert"
 import { JSDOM } from "jsdom"
 import { Core, Binding } from "domodel"
 
@@ -15,30 +16,28 @@ const model = {
 const RootModel = { tagName: "div" }
 let rootBinding
 
-export function setUp(callback) {
-	rootBinding = new Binding()
-	Core.run(RootModel, { parentNode: document.body, binding: rootBinding })
-	callback()
-}
+describe("item.binding", () => {
 
-export function tearDown(callback) {
-	rootBinding.remove()
-	callback()
-}
+	beforeEach(() => {
+		rootBinding = new Binding()
+		Core.run(RootModel, { parentNode: document.body, binding: rootBinding })
+	})
 
-export function instance(test) {
-	test.expect(1)
-	test.ok(new ItemBinding() instanceof Binding)
-	test.done()
-}
+	afterEach(() => {
+		rootBinding.remove()
+	})
 
-export function clear(test) {
-	test.expect(2)
-	const page = new Page()
-	const binding = new ItemBinding({ page })
-	rootBinding.run(model, { binding })
-	test.strictEqual(rootBinding.root.innerHTML, "<div></div>")
-	page.emit("clear")
-	test.strictEqual(rootBinding.root.innerHTML, "")
-	test.done()
-}
+	it("instance", () => {
+		assert.ok(new ItemBinding() instanceof Binding)
+	})
+
+	it("clear", () => {
+		const page = new Page()
+		const binding = new ItemBinding({ page })
+		rootBinding.run(model, { binding })
+		assert.strictEqual(rootBinding.root.innerHTML, "<div></div>")
+		page.emit("clear")
+		assert.strictEqual(rootBinding.root.innerHTML, "")
+	})
+
+})
