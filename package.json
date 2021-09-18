@@ -22,7 +22,9 @@
 	"license": "MIT",
 	"scripts": {
 		"test": "nodeunit-esm",
-		"generate-docs": "jsdoc --configure .jsdoc.json --verbose"
+		"generate-docs": "jsdoc --configure .jsdoc.json --verbose",
+		"cypress:open": "cypress open",
+		"cypress:run": "cypress run"
 	},
 	"dependencies": {
 		"domodel": "^1.0.5"
