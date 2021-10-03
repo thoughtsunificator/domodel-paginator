@@ -1,4 +1,4 @@
-# domodel-paginator [![Build Status](https://travis-ci.com/thoughtsunificator/domodel-paginator.svg?branch=master)](https://travis-ci.com/thoughtsunificator/domodel-paginator)
+# domodel-paginator
 
 Pagination system for [domodel](https://github.com/thoughtsunificator/domodel).
 
