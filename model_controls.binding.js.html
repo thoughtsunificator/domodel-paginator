@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>Home - Documentation</title>
+    <title>model/controls.binding.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -34,75 +34,84 @@
 
 <div id="main">
     
+    <h1 class="page-title">model/controls.binding.js</h1>
+    
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { Binding } from "domodel"
 
+import ControlsEventListener from "./controls.event.js"
 
-    <section class="package">
-        <h3> </h3>		
-    </section>
+/**
+ * @global
+ */
+class ControlsBinding extends Binding {
 
-
-
-
-
-
-
-
-
-    
-
-
-
-    <section class="readme usertext">
-        <article><h1 id="domodel-paginator">domodel-paginator</h1>
-<p>Pagination system for <a href="https://github.com/thoughtsunificator/domodel">domodel</a>.</p>
-<h2 id="getting-started">Getting started</h2>
-<h3 id="installing">Installing</h3>
-<p><code>npm install @domodel/paginator</code></p>
-<h3 id="usage">Usage</h3>
-<pre class="prettyprint source lang-javascript"><code>import { Core, Binding } from &quot;domodel&quot;
-import { Paginator, PaginatorModel, PaginatorBinding, ItemBinding } from &quot;@domodel/paginator&quot;
-import FruitModel from &quot;/model/fruit.js&quot;
-
-export default class extends Binding {
+	/**
+	 * @param {object} properties
+	 * @param {Paginator} properties.paginator
+	 */
+	constructor(properties) {
+		super(properties, new ControlsEventListener(properties.paginator.controls))
+	}
 
 	onCreated() {
-		const paginator = new Paginator(5)
 
-		Core.run(PaginatorModel, {
-			parentNode: this.root,
-			binding: new PaginatorBinding({ paginator })
+		const { paginator } = this.properties
+
+		this.listen(paginator, "itemsChanged", () => {
+			const maximumOffset = paginator.getMaximumOffset()
+			const maximumPage = paginator.getMaximumPage()
+			this.identifier.totalPages.textContent = `/ ${maximumPage}`
 		})
 
-		paginator.emit(&quot;itemsSet&quot;, [
-			{
-				model: FruitModel,
-				binding: new ItemBinding(),
-				properties: { name: &quot;Red&quot; }
-			},
-			{
-				model: FruitModel,
-				binding: new ItemBinding(),
-				properties: { name: &quot;Pink&quot; }
-			},
-			{
-				model: FruitModel,
-				binding: new ItemBinding(),
-				properties: { name: &quot;Green&quot; }
+		this.listen(paginator, "offsetChanged", () => {
+			const maximumOffset = paginator.getMaximumOffset()
+			if(0 === paginator.offset) {
+				this.identifier.previous.disabled = true
+			} else if(paginator.offset > 0) {
+				this.identifier.previous.disabled = false
 			}
-		])
+			if(paginator.offset === maximumOffset) {
+				this.identifier.next.disabled = true
+			} else if(maximumOffset > 0) {
+				this.identifier.next.disabled = false
+			}
+			const currentPage = paginator.getCurrentPage()
+			if(this.identifier.jump.value !== currentPage) {
+				this.identifier.jump.value = currentPage
+			}
+		})
+
+		this.identifier.previous.addEventListener("click", () => paginator.emit("previous"))
+
+		this.identifier.next.addEventListener("click", () => paginator.emit("next"))
+
+		this.identifier.jump.addEventListener("input", event => {
+			const maximumPage = paginator.getMaximumPage()
+			if(event.target.value &lt;= 0) {
+				this.identifier.jump.value = 1
+			} else if(event.target.value > maximumPage) {
+				this.identifier.jump.value = maximumPage
+			}
+			const offset = paginator.getOffsetByPage(parseInt(this.identifier.jump.value))
+			paginator.emit("offsetSet", offset)
+		})
+
 	}
 
 }
-</code></pre></article>
+
+export default ControlsBinding
+</code></pre>
+        </article>
     </section>
-
-
 
 
 

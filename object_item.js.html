@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>Home - Documentation</title>
+    <title>object/item.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -34,75 +34,65 @@
 
 <div id="main">
     
+    <h1 class="page-title">object/item.js</h1>
+    
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { Observable } from "domodel"
 
+/**
+ * @global
+ */
+class Item extends Observable {
 
-    <section class="package">
-        <h3> </h3>		
-    </section>
+	/**
+	 * @param {object}  model
+	 * @param {Binding} binding
+	 * @param {object}  properties
+	 */
+	constructor(model, binding, properties) {
+		super()
+		this._model = model
+		this._binding = binding
+		this._properties = properties
+	}
 
+	/**
+	 * @readonly
+	 * @type {Object}
+	 */
+	get model() {
+		return this._model
+	}
 
+	/**
+	 * @readonly
+	 * @type {Binding}
+	 */
+	get binding() {
+		return this._binding
+	}
 
-
-
-
-
-
-
-    
-
-
-
-    <section class="readme usertext">
-        <article><h1 id="domodel-paginator">domodel-paginator</h1>
-<p>Pagination system for <a href="https://github.com/thoughtsunificator/domodel">domodel</a>.</p>
-<h2 id="getting-started">Getting started</h2>
-<h3 id="installing">Installing</h3>
-<p><code>npm install @domodel/paginator</code></p>
-<h3 id="usage">Usage</h3>
-<pre class="prettyprint source lang-javascript"><code>import { Core, Binding } from &quot;domodel&quot;
-import { Paginator, PaginatorModel, PaginatorBinding, ItemBinding } from &quot;@domodel/paginator&quot;
-import FruitModel from &quot;/model/fruit.js&quot;
-
-export default class extends Binding {
-
-	onCreated() {
-		const paginator = new Paginator(5)
-
-		Core.run(PaginatorModel, {
-			parentNode: this.root,
-			binding: new PaginatorBinding({ paginator })
-		})
-
-		paginator.emit(&quot;itemsSet&quot;, [
-			{
-				model: FruitModel,
-				binding: new ItemBinding(),
-				properties: { name: &quot;Red&quot; }
-			},
-			{
-				model: FruitModel,
-				binding: new ItemBinding(),
-				properties: { name: &quot;Pink&quot; }
-			},
-			{
-				model: FruitModel,
-				binding: new ItemBinding(),
-				properties: { name: &quot;Green&quot; }
-			}
-		])
+	/**
+	 * @readonly
+	 * @type {object}
+	 */
+	get properties() {
+		return this._properties
 	}
 
 }
-</code></pre></article>
+
+export default Item
+</code></pre>
+        </article>
     </section>
-
-
 
 
 

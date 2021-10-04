@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>paginator.js - Documentation</title>
+    <title>object/paginator.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -29,12 +29,12 @@
     
     <input type="text" id="nav-search" placeholder="Search" />
     
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module-item-Item.html">Item</a></li><li><a href="module-page-Page.html">Page</a></li><li><a href="module-paginator-Paginator.html">Paginator</a><ul class='methods'><li data-type='method'><a href="module-paginator-Paginator.html#getCurrentItems">getCurrentItems</a></li><li data-type='method'><a href="module-paginator-Paginator.html#getNextItems">getNextItems</a></li><li data-type='method'><a href="module-paginator-Paginator.html#getPreviousItems">getPreviousItems</a></li><li data-type='method'><a href="module-paginator-Paginator.html#getItemsByOffset">getItemsByOffset</a></li><li data-type='method'><a href="module-paginator-Paginator.html#getMaximumOffset">getMaximumOffset</a></li><li data-type='method'><a href="module-paginator-Paginator.html#getMaximumPage">getMaximumPage</a></li><li data-type='method'><a href="module-paginator-Paginator.html#getCurrentPage">getCurrentPage</a></li><li data-type='method'><a href="module-paginator-Paginator.html#getPageByOffset">getPageByOffset</a></li><li data-type='method'><a href="module-paginator-Paginator.html#getOffsetByPage">getOffsetByPage</a></li><li data-type='method'><a href="module-paginator-Paginator.html#getPreviousOffset">getPreviousOffset</a></li><li data-type='method'><a href="module-paginator-Paginator.html#getNextOffset">getNextOffset</a></li><li data-type='method'><a href="module-paginator-Paginator.html#getNearestOffset">getNearestOffset</a></li></ul></li></ul><h3>Modules</h3><ul><li><a href="module-item.html">item</a></li><li><a href="module-page.html">page</a></li><li><a href="module-paginator.html">paginator</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ControlsBinding.html">ControlsBinding</a></li><li><a href="ControlsEventListener.html">ControlsEventListener</a><ul class='methods'><li data-type='method'><a href="ControlsEventListener.html#previous">previous</a></li><li data-type='method'><a href="ControlsEventListener.html#next">next</a></li></ul></li><li><a href="ItemBinding.html">ItemBinding</a></li><li><a href="PageEventListener.html">PageEventListener</a><ul class='methods'><li data-type='method'><a href="PageEventListener.html#clear">clear</a></li></ul></li><li><a href="PaginatorBinding.html">PaginatorBinding</a></li><li><a href="PaginatorEventListener.html">PaginatorEventListener</a><ul class='methods'><li data-type='method'><a href="PaginatorEventListener.html#.itemsChanged">itemsChanged</a></li><li data-type='method'><a href="PaginatorEventListener.html#.offsetChanged">offsetChanged</a></li><li data-type='method'><a href="PaginatorEventListener.html#itemsSet">itemsSet</a></li><li data-type='method'><a href="PaginatorEventListener.html#offsetSet">offsetSet</a></li><li data-type='method'><a href="PaginatorEventListener.html#offsetReset">offsetReset</a></li></ul></li><li><a href="Item.html">Item</a></li><li><a href="Page.html">Page</a></li><li><a href="Paginator.html">Paginator</a><ul class='methods'><li data-type='method'><a href="Paginator.html#getCurrentItems">getCurrentItems</a></li><li data-type='method'><a href="Paginator.html#getNextItems">getNextItems</a></li><li data-type='method'><a href="Paginator.html#getPreviousItems">getPreviousItems</a></li><li data-type='method'><a href="Paginator.html#getItemsByOffset">getItemsByOffset</a></li><li data-type='method'><a href="Paginator.html#getMaximumOffset">getMaximumOffset</a></li><li data-type='method'><a href="Paginator.html#getMaximumPage">getMaximumPage</a></li><li data-type='method'><a href="Paginator.html#getCurrentPage">getCurrentPage</a></li><li data-type='method'><a href="Paginator.html#getPageByOffset">getPageByOffset</a></li><li data-type='method'><a href="Paginator.html#getOffsetByPage">getOffsetByPage</a></li><li data-type='method'><a href="Paginator.html#getPreviousOffset">getPreviousOffset</a></li><li data-type='method'><a href="Paginator.html#getNextOffset">getNextOffset</a></li><li data-type='method'><a href="Paginator.html#getNearestOffset">getNearestOffset</a></li></ul></li></ul>
 </nav>
 
 <div id="main">
     
-    <h1 class="page-title">paginator.js</h1>
+    <h1 class="page-title">object/paginator.js</h1>
     
 
     
@@ -44,12 +44,10 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/** @module paginator */
-
-import { Observable } from "domodel"
+            <pre class="prettyprint source linenums"><code>import { Observable } from "domodel"
 
 /**
- * @memberof: module:paginator
+ * @global
  */
 class Paginator extends Observable {
 
@@ -62,6 +60,7 @@ class Paginator extends Observable {
 		this._limit = limit
 		this._offset = 0
 		this._page = null
+		this._controls = new Observable()
 	}
 
 	/**
@@ -157,6 +156,15 @@ class Paginator extends Observable {
 	}
 
 	/**
+	 * @readonly
+	 * @type {type}
+	 */
+	get controls() {
+		return this._controls
+	}
+
+	/**
+	 * @readonly
 	 * @type {Item[]}
 	 */
 	get items() {
@@ -164,6 +172,7 @@ class Paginator extends Observable {
 	}
 
 	/**
+	 * @readonly
 	 * @type {number}
 	 */
 	get limit() {
@@ -209,7 +218,7 @@ export default Paginator
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Sun Oct 03 2021 15:28:19 GMT+0000 (Coordinated Universal Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Mon Oct 04 2021 17:00:21 GMT+0000 (Coordinated Universal Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
