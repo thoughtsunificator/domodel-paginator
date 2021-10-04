@@ -25,7 +25,7 @@ export default class extends Binding {
 			binding: new PaginatorBinding({ paginator })
 		})
 
-		paginator.emit("items set", [
+		paginator.emit("itemsSet", [
 			{
 				model: FruitModel,
 				binding: new ItemBinding(),

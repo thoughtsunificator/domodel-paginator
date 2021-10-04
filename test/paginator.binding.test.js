@@ -27,7 +27,7 @@ describe("paginator.binding", () => {
 	})
 
 	it("instance", () => {
-		assert.ok(new PaginatorBinding() instanceof Binding)
+		assert.ok(PaginatorBinding.prototype instanceof Binding)
 	})
 
 	it("itemsSet", (done) => {
@@ -38,54 +38,54 @@ describe("paginator.binding", () => {
 			new Item(model, ItemBinding, { number: 3 }),
 		]
 		rootBinding.run(PaginatorModel, { binding: new PaginatorBinding({ paginator }) })
-		paginator.emit("items set", items)
+		paginator.emit("itemsSet", items)
 		assert.strictEqual(document.querySelector(".paginator .pagination-content").innerHTML, "<div>1</div><div>2</div><div>3</div>")
-		paginator.emit("items set", items)
+		paginator.emit("itemsSet", items)
 		assert.strictEqual(document.querySelector(".paginator .pagination-content").innerHTML, "<div>1</div><div>2</div><div>3</div>")
 		let index = 0
-		rootBinding.listen(paginator, "items set", items => {
+		rootBinding.listen(paginator, "itemsSet", items => {
 			if(index === 2) {
 				assert.strictEqual(document.querySelector(".paginator .pagination-content").innerHTML, "<div>1</div><div>2</div><div>3</div>")
 				done()
 			}
 			index++
 		})
-		paginator.emit("items set", items)
-		paginator.emit("items set", items)
-		paginator.emit("items set", items)
+		paginator.emit("itemsSet", items)
+		paginator.emit("itemsSet", items)
+		paginator.emit("itemsSet", items)
 	})
 
 	it("offsetReset", (done) => {
 		const paginator = new Paginator(3)
-		rootBinding.listen(paginator, "offset set", offset => {
+		rootBinding.listen(paginator, "offsetSet", offset => {
 			assert.strictEqual(offset, 0)
 			done()
 		})
 		rootBinding.run(PaginatorModel, { binding: new PaginatorBinding({ paginator }) })
-		paginator.emit("offset reset")
+		paginator.emit("offsetReset")
 	})
 
 	it("offsetSet", () => {
 		const paginator = new Paginator(2)
 		rootBinding.run(PaginatorModel, { binding: new PaginatorBinding({ paginator }) })
-		paginator.emit("items set", [
+		paginator.emit("itemsSet", [
 			new Item(model, ItemBinding, { number: 1 }),
 			new Item(model, ItemBinding, { number: 2 }),
 			new Item(model, ItemBinding, { number: 3 }),
 			new Item(model, ItemBinding, { number: 4 })
 		])
-		paginator.emit("offset set", 2)
+		paginator.emit("offsetSet", 2)
 		assert.strictEqual(document.querySelector(".paginator .pagination-content").innerHTML, "<div>3</div><div>4</div>")
-		paginator.emit("offset set", 20)
+		paginator.emit("offsetSet", 20)
 		assert.strictEqual(paginator.offset, 2)
-		paginator.emit("offset set", -5)
+		paginator.emit("offsetSet", -5)
 		assert.strictEqual(paginator.offset, 0)
 	})
 
 	it("offsetChanged", (done) => {
 		const paginator = new Paginator(3)
 		let index = 0
-		rootBinding.listen(paginator, "offset changed", offset => {
+		rootBinding.listen(paginator, "offsetChanged", offset => {
 			if(index === 0) {
 				assert.strictEqual(offset, 0)
 			} else if(index === 1) {
@@ -95,13 +95,13 @@ describe("paginator.binding", () => {
 			index++
 		})
 		rootBinding.run(PaginatorModel, { binding: new PaginatorBinding({ paginator }) })
-		paginator.emit("items set", [
+		paginator.emit("itemsSet", [
 			new Item(model, ItemBinding, { number: 1 }),
 			new Item(model, ItemBinding, { number: 2 }),
 			new Item(model, ItemBinding, { number: 3 }),
 			new Item(model, ItemBinding, { number: 4 })
 		])
-		paginator.emit("offset set", 3)
+		paginator.emit("offsetSet", 3)
 	})
 
 })

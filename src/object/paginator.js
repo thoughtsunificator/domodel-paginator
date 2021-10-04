@@ -1,9 +1,7 @@
-/** @module paginator */
-
 import { Observable } from "domodel"
 
 /**
- * @memberof: module:paginator
+ * @global
  */
 class Paginator extends Observable {
 
@@ -16,6 +14,7 @@ class Paginator extends Observable {
 		this._limit = limit
 		this._offset = 0
 		this._page = null
+		this._controls = new Observable()
 	}
 
 	/**
@@ -111,6 +110,15 @@ class Paginator extends Observable {
 	}
 
 	/**
+	 * @readonly
+	 * @type {type}
+	 */
+	get controls() {
+		return this._controls
+	}
+
+	/**
+	 * @readonly
 	 * @type {Item[]}
 	 */
 	get items() {
@@ -118,6 +126,7 @@ class Paginator extends Observable {
 	}
 
 	/**
+	 * @readonly
 	 * @type {number}
 	 */
 	get limit() {

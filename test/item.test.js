@@ -7,7 +7,7 @@ describe("item", () => {
 	it("instance", () => {
 		const model = { tagName: "div" }
 		const item = new Item(model, Binding, { test: 1 })
-		assert.ok(item instanceof Observable)
+		assert.ok(Item.prototype instanceof Observable)
 		assert.deepEqual(item.model, model)
 		assert.deepEqual(item.binding, Binding)
 		assert.strictEqual(item.properties.test, 1)

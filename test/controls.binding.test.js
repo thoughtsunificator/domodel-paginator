@@ -30,43 +30,54 @@ describe("controls.binding", () => {
 	})
 
 	it("instance", () => {
-		assert.ok(new ControlsBinding() instanceof Binding)
+		assert.ok(ControlsBinding.prototype instanceof Binding)
 	})
 
 	it("previous", (done) => {
 		const paginator = new Paginator(3)
+		paginator._items = Array.from(Array(50)).map(() => ({ model: () => ({ tagName: "div" }), binding: Binding }))
 		let count = 0
 		const binding = new PaginatorBinding({ paginator })
-		binding.listen(paginator, "offset set", offset => {
+		binding.listen(paginator, "offsetSet", offset => {
 			count++
-			assert.strictEqual(offset, paginator.getPreviousOffset())
-			if(count === 3) {
+			if(count === 1) {
+				assert.strictEqual(offset, 0)
+			} else if(count === 2) {
+				assert.strictEqual(offset, 45)
+			} else if(count === 3) {
+				assert.strictEqual(offset, 42)
 				done()
 			}
 		})
 		rootBinding.run(PaginatorModel, { binding })
-		paginator.emit("previous")
-		paginator.offset = 50
-		paginator.emit("previous")
-		paginator.emit("previous")
+		paginator.controls.emit("previous")
+		paginator.offset = paginator.getMaximumOffset()
+		paginator.controls.emit("previous")
+		paginator.controls.emit("previous")
 	})
 
 	it("next", (done) => {
 		const paginator = new Paginator(3)
+		paginator._items = Array.from(Array(50)).map(() => ({ model: () => ({ tagName: "div" }), binding: Binding }))
 		let count = 0
 		const binding = new PaginatorBinding({ paginator })
-		binding.listen(paginator, "offset set", offset => {
+		binding.listen(paginator, "offsetSet", offset => {
 			count++
-			assert.strictEqual(offset, paginator.getNextOffset())
-			if(count === 3) {
+			if(count === 1) {
+				assert.strictEqual(offset, 3)
+			} else if(count === 2) {
+				assert.strictEqual(offset, 48)
+			} else if(count === 3) {
+				assert.strictEqual(offset, 45)
 				done()
 			}
 		})
 		rootBinding.run(PaginatorModel, { binding })
-		paginator.emit("next")
-		paginator.offset = 43
-		paginator.emit("next")
-		paginator.emit("next")
+		paginator.controls.emit("next")
+		paginator.offset = paginator.getMaximumOffset()
+		paginator.controls.emit("next")
+		paginator.offset = 42
+		paginator.controls.emit("next")
 	})
 
 	it("itemsChanged", (done) => {
@@ -74,7 +85,7 @@ describe("controls.binding", () => {
 		const binding = new PaginatorBinding({ paginator })
 		rootBinding.run(PaginatorModel, { binding })
 		let count = 0
-		binding.listen(paginator, "items changed", () => {
+		binding.listen(paginator, "itemsChanged", () => {
 			count++
 			if(count === 1) {
 				assert.strictEqual(binding.identifier.controls.identifier.totalPages.textContent, "/ 2")
@@ -91,20 +102,20 @@ describe("controls.binding", () => {
 				done()
 			}
 		})
-		paginator.emit("items set", [
+		paginator.emit("itemsSet", [
 			new Item(model, ItemBinding, { number: 1 }),
 			new Item(model, ItemBinding, { number: 2 }),
 			new Item(model, ItemBinding, { number: 3 }),
 			new Item(model, ItemBinding, { number: 3 }),
 		])
-		paginator.emit("items set", [
+		paginator.emit("itemsSet", [
 			new Item(model, ItemBinding, { number: 1 }),
 			new Item(model, ItemBinding, { number: 2 }),
 		])
-		paginator.emit("items set", [
+		paginator.emit("itemsSet", [
 			new Item(model, ItemBinding, { number: 1 }),
 		])
-		paginator.emit("items set", [
+		paginator.emit("itemsSet", [
 			new Item(model, ItemBinding, { number: 1 }),
 			new Item(model, ItemBinding, { number: 2 }),
 			new Item(model, ItemBinding, { number: 3 }),
@@ -121,7 +132,7 @@ describe("controls.binding", () => {
 		const binding = new PaginatorBinding({ paginator })
 		rootBinding.run(PaginatorModel, { binding })
 		let count = 0
-		binding.listen(paginator, "offset changed", () => {
+		binding.listen(paginator, "offsetChanged", () => {
 			count++
 			if(count === 1) {
 				assert.strictEqual(binding.identifier.controls.identifier.jump.value, "1")
@@ -134,13 +145,13 @@ describe("controls.binding", () => {
 				done()
 			}
 		})
-		paginator.emit("items set", [
+		paginator.emit("itemsSet", [
 			new Item(model, ItemBinding, { number: 1 }),
 			new Item(model, ItemBinding, { number: 2 }),
 			new Item(model, ItemBinding, { number: 3 }),
 			new Item(model, ItemBinding, { number: 3 }),
 		])
-		paginator.emit("items set", [
+		paginator.emit("itemsSet", [
 			new Item(model, ItemBinding, { number: 1 }),
 			new Item(model, ItemBinding, { number: 2 }),
 		])
@@ -175,13 +186,13 @@ describe("controls.binding", () => {
 		const binding = new PaginatorBinding({ paginator })
 		let count = 0
 		rootBinding.run(PaginatorModel, { binding })
-		paginator.emit("items set", [
+		paginator.emit("itemsSet", [
 			new Item(model, ItemBinding, { number: 1 }),
 			new Item(model, ItemBinding, { number: 2 }),
 			new Item(model, ItemBinding, { number: 3 }),
 			new Item(model, ItemBinding, { number: 3 }),
 		])
-		binding.listen(paginator, "offset set", offset => {
+		binding.listen(paginator, "offsetSet", offset => {
 			count++
 			if(count === 1) {
 				assert.strictEqual(binding.identifier.controls.identifier.jump.value, "2")

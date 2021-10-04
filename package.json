@@ -25,6 +25,6 @@
 		"generate-docs": "jsdoc --configure .jsdoc.json --verbose"
 	},
 	"dependencies": {
-		"domodel": "^1.0.5"
+		"domodel": "^1.0.46"
 	}
 }

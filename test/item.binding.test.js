@@ -28,7 +28,7 @@ describe("item.binding", () => {
 	})
 
 	it("instance", () => {
-		assert.ok(new ItemBinding() instanceof Binding)
+		assert.ok(ItemBinding.prototype instanceof Binding)
 	})
 
 	it("clear", () => {

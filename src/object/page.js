@@ -1,9 +1,7 @@
-/** @module page */
-
 import { Observable } from "domodel"
 
 /**
- * @memberof: module:page
+ * @global
  */
 class Page extends Observable {
 
