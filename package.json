@@ -1,6 +1,6 @@
 {
 	"name": "@domodel/paginator",
-	"version": "1.0.7",
+	"version": "1.0.9",
 	"main": "index.js",
 	"description": "Pagination system for domodel",
 	"type": "module",
@@ -25,6 +25,6 @@
 		"generate-docs": "jsdoc --configure .jsdoc.json --verbose"
 	},
 	"dependencies": {
-		"domodel": "^1.0.5"
+		"domodel": "^1.0.46"
 	}
 }

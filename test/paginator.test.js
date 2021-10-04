@@ -7,7 +7,7 @@ describe("paginator", () => {
 
 	it("instance", () => {
 		const paginator = new Paginator(5)
-		assert.ok(paginator instanceof Observable)
+		assert.ok(Paginator.prototype instanceof Observable)
 		assert.ok(Array.isArray(paginator.items))
 		assert.strictEqual(paginator.items.length, 0)
 		assert.strictEqual(paginator.limit, 5)

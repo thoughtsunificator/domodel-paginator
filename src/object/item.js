@@ -1,16 +1,14 @@
-/** @module item */
-
 import { Observable } from "domodel"
 
 /**
- * @memberof: module:item
+ * @global
  */
 class Item extends Observable {
 
 	/**
-	 * @param {object} model
+	 * @param {object}  model
 	 * @param {Binding} binding
-	 * @param {object} properties
+	 * @param {object}  properties
 	 */
 	constructor(model, binding, properties) {
 		super()
@@ -20,6 +18,7 @@ class Item extends Observable {
 	}
 
 	/**
+	 * @readonly
 	 * @type {Object}
 	 */
 	get model() {
@@ -27,6 +26,7 @@ class Item extends Observable {
 	}
 
 	/**
+	 * @readonly
 	 * @type {Binding}
 	 */
 	get binding() {
@@ -34,6 +34,7 @@ class Item extends Observable {
 	}
 
 	/**
+	 * @readonly
 	 * @type {object}
 	 */
 	get properties() {

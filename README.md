@@ -18,14 +18,14 @@ import FruitModel from "/model/fruit.js"
 export default class extends Binding {
 
 	onCreated() {
+
 		const paginator = new Paginator(5)
 
-		Core.run(PaginatorModel, {
-			parentNode: this.root,
+		this.run(PaginatorModel, {
 			binding: new PaginatorBinding({ paginator })
 		})
 
-		paginator.emit("items set", [
+		paginator.emit("itemsSet", [
 			{
 				model: FruitModel,
 				binding: new ItemBinding(),
@@ -42,6 +42,7 @@ export default class extends Binding {
 				properties: { name: "Green" }
 			}
 		])
+		
 	}
 
 }

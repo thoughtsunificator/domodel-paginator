@@ -1,22 +1,31 @@
 import { Binding } from "domodel"
 
-export default class extends Binding {
+import ControlsEventListener from "./controls.event.js"
+
+/**
+ * @global
+ */
+class ControlsBinding extends Binding {
+
+	/**
+	 * @param {object} properties
+	 * @param {Paginator} properties.paginator
+	 */
+	constructor(properties) {
+		super(properties, new ControlsEventListener(properties.paginator.controls))
+	}
 
 	onCreated() {
 
 		const { paginator } = this.properties
 
-		this.listen(paginator, "previous", () => paginator.emit("offset set", paginator.getPreviousOffset()))
-
-		this.listen(paginator, "next", () => paginator.emit("offset set", paginator.getNextOffset()))
-
-		this.listen(paginator, "items changed", () => {
+		this.listen(paginator, "itemsChanged", () => {
 			const maximumOffset = paginator.getMaximumOffset()
 			const maximumPage = paginator.getMaximumPage()
 			this.identifier.totalPages.textContent = `/ ${maximumPage}`
 		})
 
-		this.listen(paginator, "offset changed", () => {
+		this.listen(paginator, "offsetChanged", () => {
 			const maximumOffset = paginator.getMaximumOffset()
 			if(0 === paginator.offset) {
 				this.identifier.previous.disabled = true
@@ -46,9 +55,11 @@ export default class extends Binding {
 				this.identifier.jump.value = maximumPage
 			}
 			const offset = paginator.getOffsetByPage(parseInt(this.identifier.jump.value))
-			paginator.emit("offset set", offset)
+			paginator.emit("offsetSet", offset)
 		})
 
 	}
 
 }
+
+export default ControlsBinding
