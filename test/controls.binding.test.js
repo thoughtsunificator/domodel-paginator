@@ -162,7 +162,7 @@ describe("controls.binding", () => {
 		const binding = new PaginatorBinding({ paginator })
 		let emitted = false
 		rootBinding.run(PaginatorModel, { binding })
-		binding.listen(paginator, "previous", () => {
+		binding.listen(paginator.controls, "previous", () => {
 			emitted = true
 		})
 		binding.identifier.controls.identifier.previous.dispatchEvent(new window.Event('click'));
@@ -174,7 +174,7 @@ describe("controls.binding", () => {
 		const binding = new PaginatorBinding({ paginator })
 		let emitted = false
 		rootBinding.run(PaginatorModel, { binding })
-		binding.listen(paginator, "next", () => {
+		binding.listen(paginator.controls, "next", () => {
 			emitted = true
 		})
 		binding.identifier.controls.identifier.next.dispatchEvent(new window.Event('click'));

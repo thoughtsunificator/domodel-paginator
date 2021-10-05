@@ -43,9 +43,9 @@ class ControlsBinding extends Binding {
 			}
 		})
 
-		this.identifier.previous.addEventListener("click", () => paginator.emit("previous"))
+		this.identifier.previous.addEventListener("click", () => paginator.controls.emit("previous"))
 
-		this.identifier.next.addEventListener("click", () => paginator.emit("next"))
+		this.identifier.next.addEventListener("click", () => paginator.controls.emit("next"))
 
 		this.identifier.jump.addEventListener("input", event => {
 			const maximumPage = paginator.getMaximumPage()
