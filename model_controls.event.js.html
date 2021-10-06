@@ -29,7 +29,7 @@
     
     <input type="text" id="nav-search" placeholder="Search" />
     
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ControlsBinding.html">ControlsBinding</a></li><li><a href="ControlsEventListener.html">ControlsEventListener</a><ul class='methods'><li data-type='method'><a href="ControlsEventListener.html#previous">previous</a></li><li data-type='method'><a href="ControlsEventListener.html#next">next</a></li></ul></li><li><a href="ItemBinding.html">ItemBinding</a></li><li><a href="PageEventListener.html">PageEventListener</a><ul class='methods'><li data-type='method'><a href="PageEventListener.html#clear">clear</a></li></ul></li><li><a href="PaginatorBinding.html">PaginatorBinding</a></li><li><a href="PaginatorEventListener.html">PaginatorEventListener</a><ul class='methods'><li data-type='method'><a href="PaginatorEventListener.html#.itemsChanged">itemsChanged</a></li><li data-type='method'><a href="PaginatorEventListener.html#.offsetChanged">offsetChanged</a></li><li data-type='method'><a href="PaginatorEventListener.html#itemsSet">itemsSet</a></li><li data-type='method'><a href="PaginatorEventListener.html#offsetSet">offsetSet</a></li><li data-type='method'><a href="PaginatorEventListener.html#offsetReset">offsetReset</a></li></ul></li><li><a href="Item.html">Item</a></li><li><a href="Page.html">Page</a></li><li><a href="Paginator.html">Paginator</a><ul class='methods'><li data-type='method'><a href="Paginator.html#getCurrentItems">getCurrentItems</a></li><li data-type='method'><a href="Paginator.html#getNextItems">getNextItems</a></li><li data-type='method'><a href="Paginator.html#getPreviousItems">getPreviousItems</a></li><li data-type='method'><a href="Paginator.html#getItemsByOffset">getItemsByOffset</a></li><li data-type='method'><a href="Paginator.html#getMaximumOffset">getMaximumOffset</a></li><li data-type='method'><a href="Paginator.html#getMaximumPage">getMaximumPage</a></li><li data-type='method'><a href="Paginator.html#getCurrentPage">getCurrentPage</a></li><li data-type='method'><a href="Paginator.html#getPageByOffset">getPageByOffset</a></li><li data-type='method'><a href="Paginator.html#getOffsetByPage">getOffsetByPage</a></li><li data-type='method'><a href="Paginator.html#getPreviousOffset">getPreviousOffset</a></li><li data-type='method'><a href="Paginator.html#getNextOffset">getNextOffset</a></li><li data-type='method'><a href="Paginator.html#getNearestOffset">getNearestOffset</a></li></ul></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ControlsBinding.html">ControlsBinding</a></li><li><a href="ControlsEventListener.html">ControlsEventListener</a></li><li><a href="ItemBinding.html">ItemBinding</a></li><li><a href="PageEventListener.html">PageEventListener</a></li><li><a href="PaginatorBinding.html">PaginatorBinding</a></li><li><a href="PaginatorEventListener.html">PaginatorEventListener</a></li><li><a href="Item.html">Item</a></li><li><a href="Page.html">Page</a></li><li><a href="Paginator.html">Paginator</a><ul class='methods'><li data-type='method'><a href="Paginator.html#getCurrentItems">getCurrentItems</a></li><li data-type='method'><a href="Paginator.html#getNextItems">getNextItems</a></li><li data-type='method'><a href="Paginator.html#getPreviousItems">getPreviousItems</a></li><li data-type='method'><a href="Paginator.html#getItemsByOffset">getItemsByOffset</a></li><li data-type='method'><a href="Paginator.html#getMaximumOffset">getMaximumOffset</a></li><li data-type='method'><a href="Paginator.html#getMaximumPage">getMaximumPage</a></li><li data-type='method'><a href="Paginator.html#getCurrentPage">getCurrentPage</a></li><li data-type='method'><a href="Paginator.html#getPageByOffset">getPageByOffset</a></li><li data-type='method'><a href="Paginator.html#getOffsetByPage">getOffsetByPage</a></li><li data-type='method'><a href="Paginator.html#getPreviousOffset">getPreviousOffset</a></li><li data-type='method'><a href="Paginator.html#getNextOffset">getNextOffset</a></li><li data-type='method'><a href="Paginator.html#getNearestOffset">getNearestOffset</a></li></ul></li></ul><h3>Events</h3><ul><li><a href="ControlsEventListener.html#event:previous">previous</a></li><li><a href="ControlsEventListener.html#event:next">next</a></li><li><a href="PageEventListener.html#event:clear">clear</a></li><li><a href="PaginatorEventListener.html#event:itemsChanged">itemsChanged</a></li><li><a href="PaginatorEventListener.html#event:offsetChanged">offsetChanged</a></li><li><a href="PaginatorEventListener.html#event:itemsSet">itemsSet</a></li><li><a href="PaginatorEventListener.html#event:offsetSet">offsetSet</a></li><li><a href="PaginatorEventListener.html#event:offsetReset">offsetReset</a></li></ul>
 </nav>
 
 <div id="main">
@@ -52,7 +52,7 @@
 class ControlsEventListener extends EventListener {
 
 	/**
-	 *
+	 * @event ControlsEventListener#previous
 	 */
 	previous() {
 		const { paginator } = this.properties
@@ -60,7 +60,7 @@ class ControlsEventListener extends EventListener {
 	}
 
 	/**
-	 *
+	 * @event ControlsEventListener#next
 	 */
 	next() {
 		const { paginator } = this.properties
@@ -84,7 +84,7 @@ export default ControlsEventListener
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Tue Oct 05 2021 12:56:33 GMT+0000 (Coordinated Universal Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> on Wed Oct 06 2021 21:14:29 GMT+0000 (Coordinated Universal Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
