@@ -6,7 +6,7 @@ import { EventListener } from "domodel"
 class PageEventListener extends EventListener {
 
 	/**
-	 *
+	 * @event PageEventListener#clear
 	 */
 	clear() {
 

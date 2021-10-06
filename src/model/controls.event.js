@@ -6,7 +6,7 @@ import { EventListener } from "domodel"
 class ControlsEventListener extends EventListener {
 
 	/**
-	 *
+	 * @event ControlsEventListener#previous
 	 */
 	previous() {
 		const { paginator } = this.properties
@@ -14,7 +14,7 @@ class ControlsEventListener extends EventListener {
 	}
 
 	/**
-	 *
+	 * @event ControlsEventListener#next
 	 */
 	next() {
 		const { paginator } = this.properties

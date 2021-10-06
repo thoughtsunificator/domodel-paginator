@@ -8,21 +8,18 @@ import Page from "../object/page.js"
 class PaginatorEventListener extends EventListener {
 
 	/**
-	 * @name itemsChanged
-	 * @memberOf PaginatorEventListener
-	 * @function
+	 * @event PaginatorEventListener#itemsChanged
 	 *
 	*/
 
 	/**
-	 * @name offsetChanged
-	 * @memberOf PaginatorEventListener
-	 * @function
+	 * @event PaginatorEventListener#offsetChanged
 	 *
 	*/
 
 	/**
-	 * @param {Item[]} data
+	 * @event PaginatorEventListener#itemsSet
+	 * @property {Item[]} data
 	 */
 	itemsSet(data) {
 		const { paginator } = this.properties
@@ -32,7 +29,8 @@ class PaginatorEventListener extends EventListener {
 	}
 
 	/**
-	 * @param {number} offset
+	 * @event PaginatorEventListener#offsetSet
+	 * @property {number} offset
 	 */
 	offsetSet(offset) {
 		const { paginator } = this.properties
@@ -63,7 +61,7 @@ class PaginatorEventListener extends EventListener {
 	}
 
 	/**
-	 *
+	 * @event PaginatorEventListener#offsetReset
 	 */
 	offsetReset() {
 		const { paginator } = this.properties
