@@ -17,33 +17,33 @@ import FruitModel from "/model/fruit.js"
 
 export default class extends Binding {
 
-	onCreated() {
+  onCreated() {
 
-		const paginator = new Paginator(5)
+    const paginator = new Paginator(5)
 
-		this.run(PaginatorModel, {
-			binding: new PaginatorBinding({ paginator })
-		})
+    this.run(PaginatorModel, {
+      binding: new PaginatorBinding({ paginator })
+    })
 
-		paginator.emit("itemsSet", [
-			{
-				model: FruitModel,
-				binding: new ItemBinding(),
-				properties: { name: "Red" }
-			},
-			{
-				model: FruitModel,
-				binding: new ItemBinding(),
-				properties: { name: "Pink" }
-			},
-			{
-				model: FruitModel,
-				binding: new ItemBinding(),
-				properties: { name: "Green" }
-			}
-		])
-		
-	}
+    paginator.emit("itemsSet", [
+      {
+        model: FruitModel,
+        binding: new ItemBinding(),
+        properties: { name: "Red" }
+      },
+      {
+        model: FruitModel,
+        binding: new ItemBinding(),
+        properties: { name: "Pink" }
+      },
+      {
+        model: FruitModel,
+        binding: new ItemBinding(),
+        properties: { name: "Green" }
+      }
+    ])
+    
+  }
 
 }
 ```
