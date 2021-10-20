@@ -28,17 +28,17 @@ export default class extends Binding {
     paginator.emit("itemsSet", [
       {
         model: FruitModel,
-        binding: new ItemBinding(),
+        binding: ItemBinding,
         properties: { name: "Red" }
       },
       {
         model: FruitModel,
-        binding: new ItemBinding(),
+        binding: ItemBinding,
         properties: { name: "Pink" }
       },
       {
         model: FruitModel,
-        binding: new ItemBinding(),
+        binding: ItemBinding,
         properties: { name: "Green" }
       }
     ])
